@@ -1,0 +1,61 @@
+<% include partials/header.ejs %>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/three">Working</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/normalize">Completed</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="/cistatus">Status</a>
+              </li>
+       </ul>
+    </nav>
+
+      <div class="table-wrapper">
+                <table class="table table-hovered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Employee ID</th>
+                            <th scope="col">Request Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Remarks</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Completed</th>
+                            
+                        </tr>
+                    </thead>
+                     <tbody>
+                            <% var id; %>
+                                <% if(data.length>0){ 
+                                    for(var i = data.length-1 ;i >=0;i--) { %>
+                                  <tr>
+                                    <td><%=data[i].emp_no%></td>
+                                    <td><%=data[i].request%></td>
+                                    <td><%=data[i].description%></td>
+                                    <td><%=data[i].remark_1%></td>
+                                    <td>
+                                    <form method="POST">
+                                      <input type="" name=id value= <%=data[i].request_id%> readonly></td>
+                                      <td><button type="submit" value="1" name="normalize" formaction="/normalized">Completed</button>
+                                    </form> 
+                            </tr>
+                            <% }
+                            }else{ %>
+                            <tr>
+                              <td colspan="3">No user</td>
+                            </tr>
+                          <% } %>     
+                                    
+                              
+                            
+                        </tbody>
+                    </table>
+                
+            </div>
+        </div>
+        
+       
+    </body>
+    </html>

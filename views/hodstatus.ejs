@@ -1,0 +1,91 @@
+<% include partials/header.ejs %>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/four">Review</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="/hodstatus">Status</a>
+          </li>
+        </ul>
+      </nav>
+              <body>
+                  <div class="table-wrapper">
+                          <table class="table table-hovered" id="MyTable">
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th scope="col">Initiated by</th>
+                                      <th scope="col">Date</th>
+                                      <th scope="col">ID</th>
+                                      <th scope="col">Request Name</th>
+                                      <th scope="col">Description</th>
+                                      <th scope="col">Remarks</th>
+                                      <th scope="col">Status</th>
+                                      <th scope="col">Done</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <% if(data.length>0){ 
+                                    for(var i = data.length-1 ;i >=0;i--) {
+                                     %> 
+
+                                  <tr>
+                                      <td><%=data[i].emp_no%></td>
+                                    <form>
+                                    <td><%=data[i].date%></td>
+                                    <td><a href = /one ><input type="" name=id value= <%=data[i].request_id%> readonly></a></td>
+                                    
+                                    <td><%=data[i].request%></td>
+                                    <td><%=data[i].description%></td>
+                                    <td><%=data[i].remark_1%></td>
+                                    <td>
+                                       <% if((data[i].status)==1){%>
+                                          Request has been accepted.
+                                       <%}%>
+                                       <% if((data[i].status)==2){%>
+                                        Request is under work.
+                                   <%}%>
+                                   <% if((data[i].status)==3){%>
+                                    Request has been solved.
+                                  <%}%>
+                                  <% if((data[i].status)==4){%>
+                                    Request has been verified.
+                                    <%}%>
+                                    <% if((data[i].status)==5){%>
+                                    Request has been reviewd.
+                                 <%}%>
+                              
+                                    </td>
+                                    <td>
+                                        <% if((data[i].status)==5){%>
+                                          &#9989;
+                                     <%}%>
+                                    </td>
+                                    </form>
+                                  </tr>
+                                  <% 
+                                }
+                                  }
+                                else{ %>
+                                  <tr>
+                                    <td colspan="3">No user</td>
+                                  </tr>
+                                <% } %>     
+                                          
+                                    
+                                  
+                              </tbody>
+                          </table>
+                      
+                  </div>
+              </div>
+              <!---script>
+                function deleteRow(btn) {
+               var row = btn.parentNode.parentNode;
+               row.parentNode.removeChild(row);
+               }
+
+              </script-->
+              </body>
+              </html>
+              
